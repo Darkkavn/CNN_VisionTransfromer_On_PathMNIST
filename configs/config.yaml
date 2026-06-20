@@ -1,0 +1,35 @@
+dataset:
+  name: pathmnist
+  image_size: 28
+  num_classes: 9
+  num_workers: 2
+
+training:
+  epochs: 30
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine       # cosine | step | none
+  early_stopping_patience: 7
+  seed: 42
+
+models:
+  cnn:
+    dropout: 0.3
+  resnet18:
+    pretrained: true
+    freeze_backbone: false
+  vit:
+    image_size: 28
+    patch_size: 4
+    embed_dim: 128
+    num_heads: 4
+    num_layers: 6
+    mlp_ratio: 4
+    dropout: 0.1
+
+paths:
+  data_dir: ./data/raw
+  results_dir: ./results
+  checkpoints_dir: ./results/checkpoints
+  figures_dir: ./results/figures
